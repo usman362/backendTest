@@ -4,39 +4,22 @@ namespace App\Repositories;
 use Illuminate\Http\Request;
 use App\Interfaces\ArticleRepositoryInterface;
 use App\Models\Article;
+use GuzzleHttp\Client;
+use GuzzleHttp\Psr7\Query;
+use Illuminate\Http\Client\Request as ClientRequest;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
 class ArticleRepository implements ArticleRepositoryInterface
 {
     public function getArticles(){
-        // $articles = Article::all();
-        // return ['articles' => $articles];
-        $client = new http\Client;
-$request = new http\Client\Request;
-
-$request->setRequestUrl('https://api.newscatcherapi.com/v2/search');
-$request->setRequestMethod('GET');
-$request->setQuery(new http\QueryString([
-	'q' => 'Google',
-	'lang' => 'en',
-	'sort_by' => 'relevancy',
-	'page' => '1'
-]));
-
-$request->setHeaders([
-	'x-api-key' => 'w--MJJkPfAxjSNUunHldQdUCN22CMLKDMUALuYXDf7k'
-]);
-
-$client->enqueue($request)->send();
-$response = $client->getResponse();
-
-echo $response->getBody();
+        $articles = Article::all();
+        return ['articles' => $articles];
     }
 
     public function storeArticle($request){
         $exist_article = Article::where('title',$request->title)->first();
-        if (isset($exist_article) && count($exist_article)) {
+        if (isset($exist_article)) {
             return response()->json(['message' => 'This Article posted on '.$exist_article->created_at]);
         } else {
             $article = new Article();
