@@ -21,7 +21,12 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        return $this->articleRepository->getArticles();
+        $articles = $this->articleRepository->getArticles();
+        return view('pages.articles.index',$articles);
+    }
+
+    public function create(){
+        return view('pages.articles.create');
     }
 
     public function store(StoreArticleRequest $request){

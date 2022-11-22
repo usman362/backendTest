@@ -25,6 +25,8 @@ Auth::routes();
 
 Route::get('articles',[ArticleController::class,'index'])->name('article.index');
 
+Route::get('article/create',[ArticleController::class,'create'])->name('article.create');
+
 Route::post('article/store',[ArticleController::class,'store'])->name('article.store');
 
 Route::get('article/delete/{id}',[ArticleController::class,'destroy'])->name('article.delete');
