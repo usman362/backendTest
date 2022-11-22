@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Interfaces\HomeRepositoryInterface;
 use Illuminate\Http\Request;
 use App\Jobs\TestJob;
+use Illuminate\Support\Facades\Http;
+
 class HomeController extends Controller
 {
 
@@ -22,9 +24,14 @@ class HomeController extends Controller
 
     public function index()
     {
-
+        // $response = Http::withHeaders([
+        //     'x-api-key' => 'w--MJJkPfAxjSNUunHldQdUCN22CMLKDMUALuYXDf7k'
+        // ])->get('https://api.newscatcherapi.com/v2/latest_headlines',[
+        //     'sources' => 'forbes.com'
+        // ]);
+        // dd($response->collect()['articles']);
         $articles = $this->homeRepository->getArticles();
-        TestJob::Dispatch($articles);
+        //TestJob::Dispatch($articles);
         return view('frontend.pages.index',$articles);
 
     }
