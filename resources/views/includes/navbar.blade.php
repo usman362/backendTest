@@ -9,10 +9,11 @@
     <div class="profile_info">
     <img src="{{asset('img/client_img.png')}}" alt="#">
     <div class="profile_info_iner">
-     <p>Welcome Admin!</p>
-    <h5>Travor James</h5>
+     <p>Welcome!</p>
+    <h5>{{auth()->user()->name}}</h5>
     <div class="profile_info_details">
-    <a href="#">Log Out <i class="ti-shift-left"></i></a>
+    <a href="javascript:void(0)" class="logout_btn">Log Out <i class="ti-shift-left"></i></a>
+    <form action="{{route('logout')}}" method="post" class="logout_form">@csrf</form>
     </div>
     </div>
     </div>

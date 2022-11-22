@@ -47,3 +47,9 @@
 
 <script src="{{asset('vendors/apex_chart/bar_active_1.js')}}"></script>
 <script src="{{asset('vendors/chartjs/chartjs_active.js')}}"></script>
+
+<script>
+    $('.logout_btn').click(function(){
+        $('.logout_form').submit();
+    });
+</script>
