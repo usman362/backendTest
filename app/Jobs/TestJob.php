@@ -31,6 +31,6 @@ class TestJob implements ShouldQueue
      */
     public function handle()
     {
-        print_r($this->data);
+        dd(serialize($this->data));
     }
 }

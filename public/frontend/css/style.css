@@ -243,7 +243,8 @@ header {
     border: 1px solid #efefef;
     border-top: none; }
   .blog-entries .blog-entry img {
-    max-width: 100%; }
+    max-width: 100%;
+    height: 400px; }
   .blog-entries .blog-entry h2 {
     font-size: 18px;
     line-height: 1.5; }

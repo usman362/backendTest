@@ -15,8 +15,8 @@
         @foreach ($articles as $key => $article)
 
     <div class="col-md-6">
-    <a href="blog-single.html" class="blog-entry element-animate" data-animate-effect="fadeIn">
-    <img src="{{asset('frontend/images/img_5.jpg')}}" alt="Image placeholder">
+    <a href="{{route('single',$article->id)}}" class="blog-entry element-animate" data-animate-effect="fadeIn">
+    <img src="{{$article->image_type == 'url' ? $article->image : asset('frontend/images/img_5.jpg')}}" alt="Image placeholder">
     <div class="blog-content-body">
     <div class="post-meta">
 
