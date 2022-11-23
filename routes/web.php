@@ -22,8 +22,6 @@ Route::get('article/detail/{id}', [HomeController::class, 'show'])->name('single
 
 Auth::routes();
 
-
-
 Route::get('articles',[ArticleController::class,'index'])->name('article.index');
 
 Route::get('article/create',[ArticleController::class,'create'])->name('article.create');
