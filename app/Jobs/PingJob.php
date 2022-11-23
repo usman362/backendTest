@@ -9,19 +9,18 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 
-class TestJob implements ShouldQueue
+class PingJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    private $data;
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($data)
+    public function __construct()
     {
-        $this->data = $data;
+        //
     }
 
     /**
@@ -31,8 +30,7 @@ class TestJob implements ShouldQueue
      */
     public function handle()
     {
-        $file = fopen(public_path("test_data.txt"),"w");
-        fwrite($file,$this->data);
-        fclose($file);
+        //
+        echo 'Ping Event Received' . PHP_EOL;
     }
 }
