@@ -23,7 +23,7 @@ class ArticleRepository implements ArticleRepositoryInterface
             return response()->json(['message' => 'This Article posted on '.$exist_article->created_at]);
         } else {
             $article = new Article();
-            $article->user_id = 1;
+            $article->user_id = Auth::user()->id;
             $article->title = $request->title;
             $article->short_description = $request->short_description;
             $image = $request->file('image');
@@ -31,14 +31,13 @@ class ArticleRepository implements ArticleRepositoryInterface
             $image->move(public_path('images'), $filename);
             $article->image = $filename;
             $article->save();
-            return redirect(route('article.index'));
+            return redirect(route('article.index'))->with('success','Article has Created successfully');;
         }
-
     }
 
     public function deleteArticle($id){
         $article = Article::find($id);
         $article->delete();
-        return redirect(route('article.index'));
+        return redirect(route('article.index'))->with('success','Article deleted successfully');;
     }
 }

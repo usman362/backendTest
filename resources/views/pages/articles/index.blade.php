@@ -10,12 +10,14 @@
     <h4>Articles</h4>
     <div class="box_right d-flex lms_block">
     <div class="add_button ms-2">
-    <a href="{{route('article.create')}}" data-bs-toggle="modal" data-bs-target="#addcategory" class="btn_1">Add New</a>
+        @can('article-create')
+    <a href="{{route('article.create')}}"  class="btn_1">Add New</a>
+    @endcan
     </div>
     </div>
     </div>
     <div class="QA_table ">
-
+        @include('includes.messages')
     <table class="table lms_table_active">
     <thead>
     <tr>
@@ -31,10 +33,10 @@
 
         <tr>
     <td>Category name</td>
-    <th scope="row"> <a href="#" class="question_content"> title here 1</a></th>
-    <td>Category name</td>
-    <td>16-23-22</td>
-    <td><a href="#" class="status_btn">Delete</a></td>
+    <th scope="row"> <a href="javascript:void(0)" class="question_content"> {{$article->title}}</a></th>
+    <td>{{$article->short_description}}</td>
+    <td>{{$article->created_at->format('d M Y')}}</td>
+    <td><a href="{{route('article.delete',$article->id)}}" class="status_btn">Delete</a></td>
     </tr>
 
     @endforeach
