@@ -32,7 +32,7 @@
     @foreach ($articles as $key => $article)
 
         <tr>
-    <td>Category name</td>
+    <td><img src="{{$article->image_type == 'url' ? $article->image : asset('images/'.$article->image)}}" alt="" width="70" height="55"></td>
     <th scope="row"> <a href="javascript:void(0)" class="question_content"> {{$article->title}}</a></th>
     <td>{{$article->short_description}}</td>
     <td>{{$article->created_at->format('d M Y')}}</td>

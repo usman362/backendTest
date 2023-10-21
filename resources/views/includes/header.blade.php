@@ -36,5 +36,5 @@
 
     <link rel="stylesheet" href="{{asset('css/style1.css')}}" />
     <link rel="stylesheet" href="{{asset('css/colors/default.css')}}" id="colorSkinCSS">
-    {{-- https://demo.dashboardpack.com/finance-html/data_table.html --}}
+    
     </head>

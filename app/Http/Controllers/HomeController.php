@@ -24,18 +24,6 @@ class HomeController extends Controller
 
     public function index()
     {
-
-    //     $response = Http::withHeaders([
-    //         'x-api-key' => 'w--MJJkPfAxjSNUunHldQdUCN22CMLKDMUALuYXDf7k'
-    //     ])->get('https://api.newscatcherapi.com/v2/latest_headlines',[
-    //         'sources' => 'forbes.com',
-    //         'page_size' => 100,
-    //     ]);
-    //     $articles = $response->collect();
-    //    dd($articles);
-    //     foreach ($articles as $key => $article) {
-
-    //     }
         $articles = $this->homeRepository->getArticles();
         return view('frontend.pages.index',$articles);
     }
