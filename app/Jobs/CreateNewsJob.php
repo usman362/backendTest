@@ -34,7 +34,7 @@ class CreateNewsJob implements ShouldQueue
     {
         //
         $response = Http::withHeaders([
-            'x-api-key' => 'w--MJJkPfAxjSNUunHldQdUCN22CMLKDMUALuYXDf7k'
+            'x-api-key' => 'Rx8BTHHOc3KMeI8bjGPM7B6p6JBJEVgPR_rKIqAl8is'
         ])->get('https://api.newscatcherapi.com/v2/latest_headlines',[
             'sources' => 'forbes.com',
             'page_size' => 100,
