@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+.mt-2{
+    max-width: 10px;
+}
+
+.upload-btn{
+    min-height: 0px !important;
+    padding: 5px !important;
+}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import FileUpload from './UploadExcel';
 
 const AttendanceList = () => {
     const [attendanceData, setAttendanceData] = useState([]);
@@ -40,6 +41,8 @@ const AttendanceList = () => {
                     </div>
                 </div>
             </div>
+
+            <FileUpload/>
 
             <div className="row">
                 <div className="col-md-12">
