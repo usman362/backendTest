@@ -10,16 +10,37 @@ use Illuminate\Support\Facades\Auth;
 class ArticleRepository implements ArticleRepositoryInterface
 {
     public function getArticles(){
-        //
+        // $articles = Article::all();
+        // return ['articles' => $articles];
+        $client = new http\Client;
+$request = new http\Client\Request;
+
+$request->setRequestUrl('https://api.newscatcherapi.com/v2/search');
+$request->setRequestMethod('GET');
+$request->setQuery(new http\QueryString([
+	'q' => 'Google',
+	'lang' => 'en',
+	'sort_by' => 'relevancy',
+	'page' => '1'
+]));
+
+$request->setHeaders([
+	'x-api-key' => 'w--MJJkPfAxjSNUunHldQdUCN22CMLKDMUALuYXDf7k'
+]);
+
+$client->enqueue($request)->send();
+$response = $client->getResponse();
+
+echo $response->getBody();
     }
 
     public function storeArticle($request){
         $exist_article = Article::where('title',$request->title)->first();
-        if (count($exist_article) > 0) {
+        if (isset($exist_article) && count($exist_article)) {
             return response()->json(['message' => 'This Article posted on '.$exist_article->created_at]);
         } else {
             $article = new Article();
-            $article->user_id - Auth::user()->id;
+            $article->user_id = 1;
             $article->title = $request->title;
             $article->short_description = $request->short_description;
             $image = $request->file('image');
@@ -27,7 +48,7 @@ class ArticleRepository implements ArticleRepositoryInterface
             $image->move(public_path('images'), $filename);
             $article->image = $filename;
             $article->save();
-            return response()->json(['message' => 'Article has been Successfully Added']);
+            return redirect(route('article.index'));
         }
 
     }
@@ -35,6 +56,6 @@ class ArticleRepository implements ArticleRepositoryInterface
     public function deleteArticle($id){
         $article = Article::find($id);
         $article->delete();
-        return response()->json(['message' => 'Article has been Successfully Deleted']);
+        return redirect(route('article.index'));
     }
 }
