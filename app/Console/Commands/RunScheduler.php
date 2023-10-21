@@ -2,29 +2,23 @@
 
 namespace App\Console\Commands;
 
-use App\Jobs\CreateNewsJob;
-use App\Jobs\PingJob;
-use App\Models\Article;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Log;
 
-class GenerateNews extends Command
+class RunScheduler extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'news:generate';
+    protected $signature = 'run:scheduler';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Start Generate News';
+    protected $description = 'Command description';
 
     /**
      * Create a new command instance.
@@ -43,12 +37,12 @@ class GenerateNews extends Command
      */
     public function handle()
     {
+        $this->info('Schedule worker started successfully.');
+        while (true) {
+            $this->call('schedule:run');
 
-        try{
-            CreateNewsJob::dispatch();
-            $this->info("fetching news in process");
-        }catch(\Exception $e){
-            $this->error("Error: ".$e->getMessage());
+            sleep(1*60);
         }
+        return 0;
     }
 }
