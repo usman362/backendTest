@@ -1,15 +1,16 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router-dom';
 
 export default class Header extends Component {
     render(){
         return (
             <div className="header">
             <div className="header-left">
-              <a href="dashboard" className="logo">
+              <Link to="/" className="logo">
                 <img src="https://smarthr.dreamguystech.com/codeigniter/template/blue/public/assets/img/logo.png" width={40} height={40} alt="" />
-              </a>
+              </Link>
             </div>
-            <a id="toggle_btn" href="javascript:void(0)">
+            <a id="toggle_btn" href="##">
               <span className="bar-icon">
                 <span />
                 <span />

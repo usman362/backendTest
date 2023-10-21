@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 
 class FindDuplicates extends React.Component {
     state = {
@@ -38,7 +37,7 @@ class FindDuplicates extends React.Component {
                         <div className="col-sm-12">
                             <h3 className="page-title">Duplicates</h3>
                             <ul className="breadcrumb">
-                                <li className="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
+                                <li className="breadcrumb-item"><a href="##">Dashboard</a></li>
                                 <li className="breadcrumb-item active">Duplicates</li>
                             </ul>
                         </div>
