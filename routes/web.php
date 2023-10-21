@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('article/detail', [HomeController::class, 'show'])->name('single');
+Route::get('article/detail/{id}', [HomeController::class, 'show'])->name('single');
 
 Auth::routes();
 
